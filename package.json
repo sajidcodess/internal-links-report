@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "A web cralwer that finds all the internal links of the website and generates a report",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "start": "node ./main.js",
-    "test": "test"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
     "web",
     "crawler"
   ],
   "author": "Muhammad Sajid",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
