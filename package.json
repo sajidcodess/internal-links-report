@@ -1,0 +1,16 @@
+{
+  "name": "internal-links-report",
+  "version": "1.0.0",
+  "description": "A web cralwer that finds all the internal links of the website and generates a report",
+  "main": "main.js",
+  "scripts": {
+    "start": "node ./main.js",
+    "test": "test"
+  },
+  "keywords": [
+    "web",
+    "crawler"
+  ],
+  "author": "Muhammad Sajid",
+  "license": "ISC"
+}
