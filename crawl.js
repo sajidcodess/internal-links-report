@@ -1,7 +1,8 @@
 import { JSDOM } from "jsdom";
+import { ensureProtocol, urlObject } from "./utils.js";
 
 function normalizeURL(url) {
-  const urlObj = new URL(ensureProtocol(url));
+  const urlObj = urlObject(url)
   const hostname = urlObj.hostname;
   let path = urlObj.pathname;
 
@@ -13,12 +14,6 @@ function normalizeURL(url) {
   return normalized
 }
 
-function ensureProtocol(url) {
-  if (!url.startsWith("http://") && !url.startsWith("https://")) {
-    return "https://" + url;
-  }
-  return url;
-}
 
 function getURLsFromHTML(htmlBody, baseURL) {
   let foundURLs = [];
@@ -39,8 +34,9 @@ function getURLsFromHTML(htmlBody, baseURL) {
 async function crawlPage(baseURL, currentURL = baseURL, pages = {}) {
   currentURL = ensureProtocol(currentURL)
   baseURL = ensureProtocol(baseURL)
-  const currentURLObj = new URL(ensureProtocol(currentURL));
-  const baseURLObj = new URL(ensureProtocol(baseURL));
+
+  const currentURLObj = urlObject(currentURL)
+  const baseURLObj = urlObject(baseURL)
   if (baseURLObj.hostname != currentURLObj.hostname) {
     return pages;
   }
